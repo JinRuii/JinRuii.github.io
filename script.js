@@ -161,3 +161,10 @@ document.addEventListener("keydown", (event) => {
   if (publicationModal && !publicationModal.hidden) closeModal(publicationModal);
   if (allPublicationsModal && !allPublicationsModal.hidden) closeModal(allPublicationsModal);
 });
+
+document.querySelectorAll(".research-interest-media").forEach((button) => {
+  button.addEventListener("click", () => {
+    const isZoomed = button.classList.toggle("is-zoomed");
+    button.setAttribute("aria-pressed", String(isZoomed));
+  });
+});

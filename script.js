@@ -130,11 +130,11 @@ function openPublication(publication, trigger) {
 document.querySelectorAll("[data-publication]").forEach((button) => {
   button.addEventListener("click", () => {
     const publication = publications.find((item) => item.id === button.dataset.publication);
-    if (publication) openPublication(publication, button);
+    if (publication && publicationModal) openPublication(publication, button);
   });
 });
 
-document.querySelector("#view-all-publications").addEventListener("click", (event) => {
+document.querySelector("#view-all-publications")?.addEventListener("click", (event) => {
   const list = document.querySelector("#all-publications-list");
   list.innerHTML = publications.map((publication) => `
     <article>
@@ -149,7 +149,7 @@ document.querySelector("#view-all-publications").addEventListener("click", (even
   showModal(allPublicationsModal, event.currentTarget);
 });
 
-[publicationModal, allPublicationsModal].forEach((modal) => {
+[publicationModal, allPublicationsModal].filter(Boolean).forEach((modal) => {
   modal.querySelector(".modal-close").addEventListener("click", () => closeModal(modal));
   modal.addEventListener("mousedown", (event) => {
     if (event.target === modal) closeModal(modal);
@@ -158,6 +158,6 @@ document.querySelector("#view-all-publications").addEventListener("click", (even
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
-  if (!publicationModal.hidden) closeModal(publicationModal);
-  if (!allPublicationsModal.hidden) closeModal(allPublicationsModal);
+  if (publicationModal && !publicationModal.hidden) closeModal(publicationModal);
+  if (allPublicationsModal && !allPublicationsModal.hidden) closeModal(allPublicationsModal);
 });

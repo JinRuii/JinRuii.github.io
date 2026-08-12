@@ -45,7 +45,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   font-size: 16px;
   line-height: 1;
 }
-.top-nav a:first-child { color: #c522b8; }
+.top-nav a[aria-current="page"] { color: #c522b8; font-weight: 600; }
 .top-nav a:hover { color: var(--link); text-decoration: none; }
 .top-nav span { font-size: 12px; }
 
@@ -89,8 +89,10 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 38%;
+  object-position: 50% 36%;
   display: block;
+  transform: scale(1.08);
+  transform-origin: 50% 36%;
 }
 .profile-sidebar h1 {
   margin: 0 0 8px;
@@ -147,6 +149,17 @@ footer h2 {
   line-height: 1.25;
   font-weight: 400;
 }
+.page-content > .content-section:first-child,
+.page-content > footer:first-child { padding-top: 0; }
+.page-eyebrow {
+  margin: 0 0 8px !important;
+  color: #c522b8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.section-lead { color: var(--muted); font-size: 15px; }
 .content-section h3 {
   margin: 0 0 7px;
   color: var(--heading);
@@ -279,6 +292,26 @@ footer h2 {
   border-color: var(--link);
   color: var(--link);
   text-decoration: none;
+}
+.publication-year {
+  margin: 34px 0 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.publication-year h2 {
+  margin: 0;
+  color: var(--heading);
+  font-size: 23px;
+  font-weight: 400;
+}
+.publications-page > .publication-year:first-of-type { margin-top: 28px; }
+.career-map { margin: 22px 0 0; }
+.career-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
 }
 
 .modal-backdrop {

@@ -313,6 +313,19 @@ footer h2 {
   border: 1px solid var(--line);
   border-radius: 12px;
 }
+.journey-trajectories {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.journey-trajectories p {
+  margin: 0 0 13px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.journey-trajectories p:last-child { margin-bottom: 0; }
+.journey-trajectories strong { color: var(--heading); }
 
 .modal-backdrop {
   position: fixed;

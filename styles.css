@@ -170,6 +170,17 @@ footer h2 {
 .content-section p { margin: 0 0 15px; }
 .content-section strong { color: var(--heading); }
 .intro-section > p { font-size: 16px; }
+.intro-section > .prospective-students-note {
+  margin: 23px 0 0;
+  padding: 14px 16px;
+  border: 1px solid #e1a0a0;
+  border-left: 4px solid #c62828;
+  background: #fff5f5;
+  color: #a31515;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.prospective-students-note strong { color: #a31515; }
 .recruitment-note {
   margin-top: 25px;
   padding: 14px 0 14px 18px;

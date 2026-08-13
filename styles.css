@@ -175,11 +175,11 @@ footer h2 {
   padding: 0;
   border: 0;
   background: transparent;
-  color: #f01818;
+  color: #c522b8;
   font-size: 15px;
   line-height: 1.65;
 }
-.prospective-students-note strong { color: #f01818; }
+.prospective-students-note strong { color: #c522b8; }
 .recruitment-note {
   margin-top: 25px;
   padding: 0;
@@ -195,7 +195,7 @@ footer h2 {
   display: block;
   width: fit-content;
   margin: 3px 0;
-  color: #f01818;
+  color: #c522b8;
   font-size: 15px;
   font-weight: 700;
   line-height: 1.5;
@@ -205,7 +205,7 @@ footer h2 {
   font-size: .8em;
   vertical-align: .15em;
 }
-.recruitment-note a:hover { color: #c61212; }
+.recruitment-note a:hover { color: #94198a; }
 
 .research-list {
   display: grid;

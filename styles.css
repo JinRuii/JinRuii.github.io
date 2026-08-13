@@ -172,10 +172,9 @@ footer h2 {
 .intro-section > p { font-size: 16px; }
 .intro-section > .prospective-students-note {
   margin: 23px 0 0;
-  padding: 14px 16px;
-  border: 1px solid #e1a0a0;
-  border-left: 4px solid #c62828;
-  background: #fff5f5;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #a31515;
   font-size: 15px;
   line-height: 1.65;
@@ -183,8 +182,10 @@ footer h2 {
 .prospective-students-note strong { color: #a31515; }
 .recruitment-note {
   margin-top: 25px;
-  padding: 14px 0 14px 18px;
-  border-left: 3px solid #c62828;
+  padding: 15px 18px;
+  border: 1px solid #efcaca;
+  border-radius: 4px;
+  background: #fff7f7;
 }
 .recruitment-note p {
   margin: 0 0 5px;

@@ -175,33 +175,37 @@ footer h2 {
   padding: 0;
   border: 0;
   background: transparent;
-  color: #a31515;
+  color: #f01818;
   font-size: 15px;
   line-height: 1.65;
 }
-.prospective-students-note strong { color: #a31515; }
+.prospective-students-note strong { color: #f01818; }
 .recruitment-note {
   margin-top: 25px;
-  padding: 15px 18px;
-  border: 1px solid #efcaca;
-  border-radius: 4px;
-  background: #fff7f7;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 .recruitment-note p {
   margin: 0 0 5px;
-  color: #b71c1c;
+  color: var(--heading);
   font-size: 13px;
 }
 .recruitment-note a {
   display: block;
   width: fit-content;
   margin: 3px 0;
-  color: #c62828;
+  color: #f01818;
   font-size: 15px;
   font-weight: 700;
   line-height: 1.5;
 }
-.recruitment-note a:hover { color: #8e0000; }
+.recruitment-note a::after {
+  content: " ↗";
+  font-size: .8em;
+  vertical-align: .15em;
+}
+.recruitment-note a:hover { color: #c61212; }
 
 .research-list {
   display: grid;

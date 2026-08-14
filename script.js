@@ -1,5 +1,67 @@
 const scholarUrl = "https://scholar.google.com/citations?user=DCsYsa0AAAAJ&hl=en";
 
+const publicationTopics = new Map([
+  ["Green in isolation: An interpretable spatial machine learning approach to understanding green satisfaction disparities in segregated neighborhoods", ["climate", "health"]],
+  ["From agglomeration to downgrading: Spatial differentiation and drivers of online and offline consumption downgrading in Chinese cities", ["health"]],
+  ["Unveiling spatiotemporal mechanisms of urban traffic: Multi-scale determinants and explainable street-level dynamics of a graph neural network in Berlin", ["mobility"]],
+  ["Sinking city: A multidimensional dataset for urban and land subsidence modelling based on satellite imagery in Jakarta, Indonesia (2016–2024)", ["climate"]],
+  ["Street-level monitoring of urban tactile paving obstructions through visual-language models and street view imagery", ["mobility", "health"]],
+  ["Artificial intelligence applications in urban extreme heat management: A systematic review of forecasting, monitoring, mitigation and decision support", ["climate", "health"]],
+  ["From causes to consequences: Unpacking the fragmented logic of urban commuting research through LLM-assisted review", ["mobility", "health"]],
+  ["One city, two heats: An LLM-enabled comparative analysis of heat perception, thermal environment, and health pathways in Beijing, China", ["climate", "health"]],
+  ["Social media-driven multi-scale flood sensing: A systematic review of applications from global monitoring to community resilience", ["climate", "health"]],
+  ["Paying lip service? An investigation into the spatial mismatch between younger and older adults’ streetscape perceptual preference and visitation behavior", ["mobility", "health"]],
+  ["The digital economy enhances overall life satisfaction but reduces equity among vulnerable groups: Empirical evidence from 287 cities in China", ["health"]],
+  ["Rethinking urban shrinkage: An LLM-enhanced literature review of global landscapes and theoretical reconstruction of shrinking cities", ["health"]],
+  ["Estimating road speed classes: Integrating OpenStreetMap and Street View imagery for missing data imputation", ["mobility"]],
+  ["Scale-dependent environmental influences on urban green space sentiment: Integrating multimodal social media analysis and explainable spatial models", ["climate", "health"]],
+  ["Intergenerational spatial differentiation in neighborhood renewal: How can we achieve spatial equity between the elderly and the young?", ["health"]],
+  ["Marginalized but equal? An investigation of visible green equity disparities in marginalized residents' daily commutes and its potential green solutions", ["climate", "mobility", "health"]],
+  ["Green disparities, happiness elusive: Decoding the spatial mismatch between green equity and happiness from vulnerable perspectives", ["climate", "health"]],
+  ["Leveraging large language models for tourism research based on 5D framework: A collaborative analysis of tourist sentiments and spatial features", ["mobility", "health"]],
+  ["Plausible or misleading? Evaluating the adaption of the Place Pulse 2.0 dataset for predicting subjective perception in Chinese urban landscapes", ["health"]],
+  ["Revealing the impact of urban spatial morphology on land surface temperature in plain and plateau cities using explainable machine learning", ["climate", "health"]],
+  ["Towards equal neighborhood evolution? A longitudinal study of soundscape and visual evolution and housing value fluctuations in Shenzhen", ["climate", "health"]],
+  ["Beyond built environment: Unveiling the interplay of streetscape perceptions and cycling behavior", ["mobility", "health"]],
+  ["Destigmatizing urban villages by examining their attractiveness: Quantification evidence from Shenzhen", ["health"]],
+  ["Deciphering urban bike-sharing patterns: An in-depth analysis of natural environment and visual quality in New York's Citi Bike system", ["climate", "mobility"]],
+  ["Decoding vibrant neighborhoods: Disparities between formal neighborhoods and urban villages in eye-level perceptions and physical environment", ["climate", "health"]],
+  ["Exploring the association between the settlement environment and residents' positive sentiments in urban villages and formal settlements in Shenzhen", ["climate", "health"]],
+  ["Measuring streetscape perceptions from driveways and sidewalks to inform pedestrian-oriented street renewal in Düsseldorf", ["mobility", "health"]],
+  ["Examining the role of innovative streets in enhancing urban mobility and livability for sustainable urban transition: A review", ["climate", "mobility", "health"]]
+]);
+
+function publicationTitle(article) {
+  return article.querySelector(".publication-title")?.textContent.trim() || "";
+}
+
+function applyPublicationFilter(topic) {
+  const publicationPage = document.querySelector(".publications-page");
+  if (!publicationPage) return;
+
+  publicationPage.querySelectorAll(".publication-list article").forEach((article) => {
+    const topics = publicationTopics.get(publicationTitle(article)) || [];
+    article.hidden = topic !== "all" && !topics.includes(topic);
+  });
+  publicationPage.querySelectorAll(".publication-year").forEach((heading) => {
+    heading.hidden = topic !== "all";
+  });
+  publicationPage.querySelectorAll(".publication-filters button").forEach((button) => {
+    const isActive = button.dataset.topic === topic;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+document.querySelectorAll(".publication-filters button").forEach((button) => {
+  const topic = button.dataset.topic;
+  const count = topic === "all"
+    ? publicationTopics.size
+    : [...publicationTopics.values()].filter((topics) => topics.includes(topic)).length;
+  button.querySelector("span").textContent = String(count);
+  button.addEventListener("click", () => applyPublicationFilter(topic));
+});
+
 const publications = [
   {
     id: "green-isolation",

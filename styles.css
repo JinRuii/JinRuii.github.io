@@ -348,6 +348,54 @@ footer h2 {
   font-weight: 400;
 }
 .publications-page > .publication-year:first-of-type { margin-top: 28px; }
+.publication-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 26px 0 8px;
+}
+.publication-filters button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  padding: 7px 15px;
+  background: #ffffff;
+  color: var(--heading);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1;
+}
+.publication-filters button span {
+  display: inline-grid;
+  min-width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f3e5f2;
+  color: #7d176f;
+  font-size: 11px;
+}
+.publication-filters button:hover {
+  border-color: #c522b8;
+  color: #94198a;
+}
+.publication-filters button.is-active {
+  border-color: #c522b8;
+  background: #c522b8;
+  color: #ffffff;
+}
+.publication-filters button.is-active span {
+  background: rgba(255, 255, 255, .22);
+  color: #ffffff;
+}
+.publication-filters button:focus-visible {
+  outline: 2px solid #c522b8;
+  outline-offset: 2px;
+}
 .career-map { margin: 22px 0 0; }
 .career-map img {
   display: block;
@@ -597,6 +645,8 @@ footer .copyright {
   .research-list { grid-template-columns: 1fr; }
   .section-title-row { display: block; }
   .section-title-row h2 { margin-bottom: 8px; }
+  .publication-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
+  .publication-filters button { flex: 0 0 auto; white-space: nowrap; }
   .timeline article { grid-template-columns: 82px minmax(0, 1fr); gap: 12px; }
   .news-list article { grid-template-columns: 72px minmax(0, 1fr); gap: 12px; }
   .modal-backdrop { padding: 14px; }

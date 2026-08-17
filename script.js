@@ -354,9 +354,7 @@ function authorHtml(authors) {
 }
 
 function actionHtml(publication) {
-  const doiLink = `<a href="${publication.doi}" target="_blank" rel="noreferrer">${publication.doi.replace("https://doi.org/","")} <span aria-hidden="true">↗</span></a>`;
-  const pdfLink = publication.pdf ? `<a href="${publication.pdf}" target="_blank" rel="noreferrer">PDF <span aria-hidden="true">↗</span></a>` : "";
-  return doiLink + pdfLink;
+  return `<a href="${publication.doi}" target="_blank" rel="noreferrer">Full text <span aria-hidden="true">↗</span></a>`;
 }
 
 function showModal(modal, trigger) {

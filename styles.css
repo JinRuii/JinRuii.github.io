@@ -199,12 +199,12 @@ footer h2 {
   margin: 6px 0;
 }
 .recruitment-list a {
-  color: #2563eb;
+  color: #c522b8;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.55;
 }
-.recruitment-list a:hover { color: #1d4ed8; }
+.recruitment-list a:hover { color: #94198a; }
 .application-block {
   margin-top: 36px;
   padding-top: 28px;
@@ -560,10 +560,10 @@ footer h2 {
 .opportunity[id] { scroll-margin-top: 88px; }
 .open-label {
   margin-bottom: 5px !important;
-  color: #2f7a43;
-  font-size: 16px;
+  color: #c522b8;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: .08em;
   text-transform: none;
 }
 .opportunity h3 { font-size: 21px; }

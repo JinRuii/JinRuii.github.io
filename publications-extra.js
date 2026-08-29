@@ -211,9 +211,6 @@ if (publicationsPage) {
   });
   publicationsPage.append(preprintHeading, preprintList);
 
-  const lead = publicationsPage.querySelector(".section-lead");
-  if (lead) lead.textContent = "38 research outputs aligned with the Google Scholar profile: 35 journal articles and 3 preprints/working papers.";
-
   // Hard reconciliation: remove any rendered item that is not represented in the 38-record data model.
   const allowedIds = new Set(publications.map((item) => item.id));
   publicationsPage.querySelectorAll(".publication-list article").forEach((article) => {

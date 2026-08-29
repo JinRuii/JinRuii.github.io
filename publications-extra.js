@@ -55,6 +55,26 @@ publications.push(
     abstract: "This preprint evaluates whether vision-language models can infer building construction, current use and storeys from Google Street View imagery in ways that agree with human experts. It compares several leading models and prompting strategies, finding that chain-of-thought prompting produces more stable performance and that model accuracy can approach roughly 70% across the building-typology tasks. The reasoning analysis shows that AI relies more heavily on visual cues, while human experts incorporate broader contextual and domain knowledge. The study positions vision-language models as scalable complements to expert urban analysis rather than replacements for expert judgement.",
     doi: "https://arxiv.org/abs/2607.14756",
     pdf: ""
+  },
+  {
+    id: "visible-order-hidden-fear",
+    date: "Jan 2026",
+    title: "Visible order and hidden fear: perceived safety and crime risk across day and night in Shanghai's main urban area",
+    authors: "Ziwen He, Chenfan Cai & Jin Rui",
+    journal: "SSRN preprint 6214802",
+    abstract: "This preprint investigates how perceived safety and crime risk differ between daytime and nighttime in Shanghai's main urban area. It combines generative day-to-night street-view imagery, a localized resident survey and spatial modelling to compare safety perception with crime patterns. The analysis identifies substantially lower nighttime safety perceptions, spatial clustering, and context-dependent relationships between crowd activity, entertainment venues, ageing communities and crime risk, providing evidence for temporally differentiated urban safety governance.",
+    doi: "https://doi.org/10.2139/ssrn.6214802",
+    pdf: ""
+  },
+  {
+    id: "consumption-shrinkage-bidirectional",
+    date: "Sep 2025",
+    title: "Bidirectional Interactions Between Consumption Downgrading and Urban Spatial Shrinkage in the Digital Era: Evidence from 286 Chinese Cities",
+    authors: "Yufei Wu & Jin Rui",
+    journal: "SSRN preprint 5526178",
+    abstract: "This preprint examines the co-evolution of online and offline consumption downgrading and urban spatial shrinkage across 286 Chinese cities from 2018 to 2023. Using entropy-based indices, coupling-coordination analysis and GNN-enhanced geographically weighted regression, it finds strong regional disparities and an asymmetric relationship in which urban shrinkage has a stronger immediate effect on consumption downgrading, while the reverse pathway exhibits a time lag. The study develops a consumption-spatial framework for understanding urban transition under economic restructuring.",
+    doi: "https://doi.org/10.2139/ssrn.5526178",
+    pdf: ""
   }
 );
 
@@ -145,7 +165,7 @@ if (year2026List?.classList.contains('publication-list')) {
 const sectionLead = document.querySelector('.publications-page .section-lead');
 if (sectionLead) sectionLead.textContent = 'Peer-reviewed journal articles are listed from newest to oldest. Preprints and research datasets are listed separately below.';
 
-// Add the verified arXiv preprint as a separate research-output section.
+// Add verified, non-duplicate preprints separately. Earlier working papers that already have a journal version are not repeated.
 const publicationsSection = document.querySelector('.publications-page');
 if (publicationsSection && !document.querySelector('#preprints-heading')) {
   const preprintHeading = document.createElement('div');
@@ -155,7 +175,10 @@ if (publicationsSection && !document.querySelector('#preprints-heading')) {
 
   const preprintList = document.createElement('div');
   preprintList.className = 'publication-list';
-  preprintList.innerHTML = `<article><p class="publication-title"><button type="button" data-publication="ai-human-building-typology">AI vs Human Expert Reasoning: Assessing Agreements in Building Typology Predictions based on Street View Imagery</button></p><p class="publication-authors">Zahratu Shabrina, Muhammad Asa, <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a>, Lu Yin &amp; Stephen Law</p><p class="publication-venue"><em>arXiv:2607.14756</em>, Jul 2026, <a href="https://arxiv.org/abs/2607.14756" target="_blank" rel="noreferrer">arXiv</a></p><div class="publication-actions"><button type="button" data-publication="ai-human-building-typology">Abs</button><a href="https://arxiv.org/abs/2607.14756" target="_blank" rel="noreferrer">Full text</a></div></article>`;
+  preprintList.innerHTML = `
+    <article><p class="publication-title"><button type="button" data-publication="ai-human-building-typology">AI vs Human Expert Reasoning: Assessing Agreements in Building Typology Predictions based on Street View Imagery</button></p><p class="publication-authors">Zahratu Shabrina, Muhammad Asa, <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a>, Lu Yin &amp; Stephen Law</p><p class="publication-venue"><em>arXiv:2607.14756</em>, Jul 2026, <a href="https://arxiv.org/abs/2607.14756" target="_blank" rel="noreferrer">arXiv</a></p><div class="publication-actions"><button type="button" data-publication="ai-human-building-typology">Abs</button><a href="https://arxiv.org/abs/2607.14756" target="_blank" rel="noreferrer">Full text</a></div></article>
+    <article><p class="publication-title"><button type="button" data-publication="visible-order-hidden-fear">Visible order and hidden fear: perceived safety and crime risk across day and night in Shanghai's main urban area</button></p><p class="publication-authors">Ziwen He, Chenfan Cai &amp; <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a></p><p class="publication-venue"><em>SSRN preprint 6214802</em>, Jan 2026, <a href="https://doi.org/10.2139/ssrn.6214802" target="_blank" rel="noreferrer">10.2139/ssrn.6214802</a></p><div class="publication-actions"><button type="button" data-publication="visible-order-hidden-fear">Abs</button><a href="https://doi.org/10.2139/ssrn.6214802" target="_blank" rel="noreferrer">Full text</a></div></article>
+    <article><p class="publication-title"><button type="button" data-publication="consumption-shrinkage-bidirectional">Bidirectional Interactions Between Consumption Downgrading and Urban Spatial Shrinkage in the Digital Era: Evidence from 286 Chinese Cities</button></p><p class="publication-authors">Yufei Wu &amp; <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a></p><p class="publication-venue"><em>SSRN preprint 5526178</em>, Sep 2025, <a href="https://doi.org/10.2139/ssrn.5526178" target="_blank" rel="noreferrer">10.2139/ssrn.5526178</a></p><div class="publication-actions"><button type="button" data-publication="consumption-shrinkage-bidirectional">Abs</button><a href="https://doi.org/10.2139/ssrn.5526178" target="_blank" rel="noreferrer">Full text</a></div></article>`;
 
   publicationsSection.append(preprintHeading, preprintList);
   bindPublicationButtons(preprintList);

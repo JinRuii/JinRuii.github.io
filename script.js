@@ -2,6 +2,7 @@ const scholarUrl = "https://scholar.google.com/citations?user=DCsYsa0AAAAJ&hl=en
 
 const publicationTopics = new Map([
   ["Function over morphology: Understanding street environment and pedestrian flow in urban villages through UAV-based tracking", ["mobility"]],
+  ["From planar proximity to room-level depth: Nonlinear capitalization of historic landscape visibility in dense urban districts", ["climate", "health"]],
   ["Green in isolation: An interpretable spatial machine learning approach to understanding green satisfaction disparities in segregated neighborhoods", ["climate", "health"]],
   ["From agglomeration to downgrading: Spatial differentiation and drivers of online and offline consumption downgrading in Chinese cities", ["health"]],
   ["Unveiling spatiotemporal mechanisms of urban traffic: Multi-scale determinants and explainable street-level dynamics of a graph neural network in Berlin", ["mobility"]],
@@ -73,6 +74,16 @@ const publications = [
     journal: "Computers, Environment and Urban Systems 130, 102506",
     abstract: "Urban villages (UVs) are distinctive informal settlements formed during China's rapid urbanization. These settlements are characterized by high-density buildings, mixed functions, and complex street layouts, currently accommodating nearly one-quarter of the urban population in cities across developing regions. While the influence of street environmental characteristics on residents' walking behavior has been well documented, their application in microscale environments of informal settlements has been rarely explored. Moreover, previous studies have primarily relied on traditional methods such as questionnaire surveys and GPS tracking, neglecting high-frequency real-time pedestrian trajectory tracking, which may lead to incomplete understanding of environment-behavior relationships. To address these research gaps, we employed Unmanned Aerial Vehicle (UAV) remote sensing technology combined with deep learning algorithms to trace pedestrian spatiotemporal behavior patterns across four street typologies in a Shenzhen UV. We extracted functional features and human-scale visual features from street view imagery, then employed machine learning models to analyze their influence mechanisms on pedestrian flow. Our findings suggest that, in the observed daytime UV settings, functional accessibility variables showed stronger predictive associations with pedestrian flow than objective visual/morphological variables, and this influence mechanism exhibits strong spatial dependency across street types. Moreover, certain functional attributes demonstrate consistent dominant effects, while spatial interventions show contrasting impacts depending on street width and capacity. Cross-regional analysis across 43 UVs suggests that the visual-feature extraction framework is scalable across diverse UV contexts, while full functional-behavioral validation remains future work. These insights question current regeneration practices focused on appearance-oriented physical upgrading and suggest prioritizing functional accessibility enhancements, offering evidence-based guidance for informal settlement upgrading across broader geographic scopes in cities within emerging economies.",
     doi: "https://doi.org/10.1016/j.compenvurbsys.2026.102506",
+    pdf: ""
+  },
+  {
+    id: "historic-landscape-visibility",
+    date: "Jan 2027",
+    title: "From planar proximity to room-level depth: Nonlinear capitalization of historic landscape visibility in dense urban districts",
+    authors: "Zuozheng Shi, Chenfan Cai, Wenlin Zhao & Jin Rui",
+    journal: "Land Use Policy 172, 108293",
+    abstract: "Historic landscape visibility is often treated as a two-dimensional proximity amenity, yet its housing-market capitalization in dense urban districts is shaped by room-level depth, viewing geometry, and nonlinear threshold effects. This study moves from planar proximity measures to a three-dimensional, room-level visibility framework and examines how historic landscape views are capitalized in high-density districts. Combining visibility analysis with interpretable spatial machine learning, the results show that the price premium of historic landscape visibility is nonlinear, spatially heterogeneous, and sensitive to viewing depth rather than simple distance. These findings suggest that heritage-view protection and land-use regulation should account for vertical morphology and room-level visual access, rather than relying solely on planar buffers around historic landscapes.",
+    doi: "https://doi.org/10.1016/j.landusepol.2026.108293",
     pdf: ""
   },
   {

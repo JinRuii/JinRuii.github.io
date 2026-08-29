@@ -1,6 +1,9 @@
+// Publication audit additions and metadata corrections (2026-08-29).
+// Peer-reviewed journal articles remain the items counted by the topic filters.
 publicationTopics.set("The mitigating effect of green space's spatial and temporal patterns on the urban heat island in the context of urban densification: A case study of Xi'an", ["climate", "health"]);
 publicationTopics.set("Encouraging cycling through the improvement of streetscape perception: A bottom-up investigation into the relationship between street greening and bicycling volume", ["climate", "mobility", "health"]);
 publicationTopics.set("Unpacking spatial-digital coupling: nonlinear morphological association ranges and spatially heterogeneous built-environment relationships in Beijing", ["mobility"]);
+publicationTopics.set("Revealing disparities and driving factors in leisure activity segregation of residents and tourists: A data-driven analysis of smart phone data", ["mobility", "health"]);
 
 publications.push(
   {
@@ -32,36 +35,151 @@ publications.push(
     abstract: "This study examines spatial-digital coupling in Beijing's Capital Core Functional Area using anonymized cellular records to construct a grid-level measure of digital infrastructure usage intensity. An interpretable framework combining XGBoost, SHAP and geographically weighted regression identifies nonlinear and spatially heterogeneous relationships with the built environment. Commercial service quality and block openness emerge as leading predictors, while heritage concentration shows a nonlinear association and street-level greenery can strengthen digital activity in more permeable settings. The findings highlight the importance of context-specific rather than universal planning thresholds for digitally active historic urban areas.",
     doi: "https://doi.org/10.1016/j.cacint.2026.100438",
     pdf: ""
+  },
+  {
+    id: "leisure-activity-segregation",
+    date: "Mar 2025",
+    title: "Revealing disparities and driving factors in leisure activity segregation of residents and tourists: A data-driven analysis of smart phone data",
+    authors: "Xun Zhang, Jin Rui, Geyang Xia, Junyan Yang, Chenfan Cai & Wenjia Zhao",
+    journal: "Applied Geography 176, 103513",
+    abstract: "This study examines leisure-activity segregation between residents and tourists in Zhoushan using smart-phone and POI data. It identifies clear spatiotemporal differences in leisure preferences and finds that tourists experience higher segregation, particularly on weekdays and in selected functional areas. XGBoost and SHAP analyses show that built-environment effects vary across contexts, with factors such as floor-area ratio, POI density and proximity to inter-city bus stations associated with lower tourist segregation. The findings support differentiated planning strategies for more inclusive urban leisure spaces.",
+    doi: "https://doi.org/10.1016/j.apgeog.2025.103513",
+    pdf: ""
+  },
+  {
+    id: "ai-human-building-typology",
+    date: "Jul 2026",
+    title: "AI vs Human Expert Reasoning: Assessing Agreements in Building Typology Predictions based on Street View Imagery",
+    authors: "Zahratu Shabrina, Muhammad Asa, Jin Rui, Lu Yin & Stephen Law",
+    journal: "arXiv:2607.14756",
+    abstract: "This preprint evaluates whether vision-language models can infer building construction, current use and storeys from Google Street View imagery in ways that agree with human experts. It compares several leading models and prompting strategies, finding that chain-of-thought prompting produces more stable performance and that model accuracy can approach roughly 70% across the building-typology tasks. The reasoning analysis shows that AI relies more heavily on visual cues, while human experts incorporate broader contextual and domain knowledge. The study positions vision-language models as scalable complements to expert urban analysis rather than replacements for expert judgement.",
+    doi: "https://arxiv.org/abs/2607.14756",
+    pdf: ""
   }
 );
 
-// Insert the newly published City and Environment Interactions article into the 2026 list.
-const functionPaper = document.querySelector('[data-publication="function-over-morphology"]')?.closest('article');
-if (functionPaper && !document.querySelector('[data-publication="spatial-digital-coupling"]')) {
-  const article = document.createElement('article');
-  article.innerHTML = `<p class="publication-title"><button type="button" data-publication="spatial-digital-coupling">Unpacking spatial-digital coupling: nonlinear morphological association ranges and spatially heterogeneous built-environment relationships in Beijing</button></p><p class="publication-authors">Zuozheng Shi, Senyang Yao, <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a>, Changran Li &amp; Wen Ouyang</p><p class="publication-venue"><em>City and Environment Interactions, 100438</em>, Aug 2026, <a href="https://doi.org/10.1016/j.cacint.2026.100438" target="_blank" rel="noreferrer">10.1016/j.cacint.2026.100438</a></p><div class="publication-actions"><button type="button" data-publication="spatial-digital-coupling">Abs</button><a href="https://doi.org/10.1016/j.cacint.2026.100438" target="_blank" rel="noreferrer">Full text</a></div>`;
-  functionPaper.insertAdjacentElement('afterend', article);
-  article.querySelectorAll('[data-publication="spatial-digital-coupling"]').forEach((button) => {
+function bindPublicationButtons(root) {
+  root.querySelectorAll('[data-publication]').forEach((button) => {
+    if (button.dataset.auditBound === 'true') return;
+    button.dataset.auditBound = 'true';
     button.addEventListener('click', () => {
-      const publication = publications.find((item) => item.id === 'spatial-digital-coupling');
+      const publication = publications.find((item) => item.id === button.dataset.publication);
       if (publication && publicationModal) openPublication(publication, button);
     });
   });
 }
 
-// The Digital Health article was already listed; refine its publication date using the journal record.
-const digitalHealthPublication = publications.find((item) => item.id === 'digital-quality-gradient');
-if (digitalHealthPublication) digitalHealthPublication.date = 'Aug 2026';
-const digitalHealthArticle = document.querySelector('[data-publication="digital-quality-gradient"]')?.closest('article');
-if (digitalHealthArticle) {
-  const venue = digitalHealthArticle.querySelector('.publication-venue');
-  if (venue) venue.innerHTML = `<em>DIGITAL HEALTH 12, 1-17</em>, Aug 2026, <a href="https://doi.org/10.1177/20552076261465140" target="_blank" rel="noreferrer">10.1177/20552076261465140</a>`;
+function updatePublicationVenue(id, html) {
+  const article = document.querySelector(`[data-publication="${id}"]`)?.closest('article');
+  const venue = article?.querySelector('.publication-venue');
+  if (venue) venue.innerHTML = html;
 }
 
-document.querySelectorAll(".publication-filters button").forEach((button) => {
+function updatePublicationDate(id, date) {
+  const publication = publications.find((item) => item.id === id);
+  if (publication) publication.date = date;
+}
+
+// Align metadata to the journal issue/official record rather than early-online dates.
+updatePublicationDate('function-over-morphology', 'Dec 2026');
+updatePublicationVenue('function-over-morphology', `<em>Computers, Environment and Urban Systems 130, 102506</em>, Dec 2026, <a href="https://doi.org/10.1016/j.compenvurbsys.2026.102506" target="_blank" rel="noreferrer">10.1016/j.compenvurbsys.2026.102506</a>`);
+
+updatePublicationDate('sinking-city', 'Aug 2026');
+updatePublicationVenue('sinking-city', `<em>Data in Brief 67, 113048</em>, Aug 2026, <a href="https://doi.org/10.1016/j.dib.2026.113048" target="_blank" rel="noreferrer">10.1016/j.dib.2026.113048</a>`);
+
+updatePublicationDate('digital-quality-gradient', 'Aug 2026');
+updatePublicationVenue('digital-quality-gradient', `<em>DIGITAL HEALTH 12, 1-17</em>, Aug 2026, <a href="https://doi.org/10.1177/20552076261465140" target="_blank" rel="noreferrer">10.1177/20552076261465140</a>`);
+
+updatePublicationDate('destigmatizing-urban-villages', 'Aug 2024');
+updatePublicationVenue('destigmatizing-urban-villages', `<em>Habitat International 150, 103120</em>, Aug 2024, <a href="https://doi.org/10.1016/j.habitatint.2024.103120" target="_blank" rel="noreferrer">10.1016/j.habitatint.2024.103120</a>`);
+
+// Insert the City and Environment Interactions paper into the 2026 journal list.
+const functionPaper = document.querySelector('[data-publication="function-over-morphology"]')?.closest('article');
+if (functionPaper && !document.querySelector('[data-publication="spatial-digital-coupling"]')) {
+  const article = document.createElement('article');
+  article.innerHTML = `<p class="publication-title"><button type="button" data-publication="spatial-digital-coupling">Unpacking spatial-digital coupling: nonlinear morphological association ranges and spatially heterogeneous built-environment relationships in Beijing</button></p><p class="publication-authors">Zuozheng Shi, Senyang Yao, <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a>, Changran Li &amp; Wen Ouyang</p><p class="publication-venue"><em>City and Environment Interactions, 100438</em>, Aug 2026, <a href="https://doi.org/10.1016/j.cacint.2026.100438" target="_blank" rel="noreferrer">10.1016/j.cacint.2026.100438</a></p><div class="publication-actions"><button type="button" data-publication="spatial-digital-coupling">Abs</button><a href="https://doi.org/10.1016/j.cacint.2026.100438" target="_blank" rel="noreferrer">Full text</a></div>`;
+  functionPaper.insertAdjacentElement('afterend', article);
+  bindPublicationButtons(article);
+}
+
+// Insert the missing Applied Geography article into the 2025 journal list.
+const placePulsePaper = document.querySelector('[data-publication="place-pulse"]')?.closest('article');
+if (placePulsePaper && !document.querySelector('[data-publication="leisure-activity-segregation"]')) {
+  const article = document.createElement('article');
+  article.innerHTML = `<p class="publication-title"><button type="button" data-publication="leisure-activity-segregation">Revealing disparities and driving factors in leisure activity segregation of residents and tourists: A data-driven analysis of smart phone data</button></p><p class="publication-authors">Xun Zhang, <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a>, Geyang Xia, Junyan Yang, Chenfan Cai &amp; Wenjia Zhao</p><p class="publication-venue"><em>Applied Geography 176, 103513</em>, Mar 2025, <a href="https://doi.org/10.1016/j.apgeog.2025.103513" target="_blank" rel="noreferrer">10.1016/j.apgeog.2025.103513</a></p><div class="publication-actions"><button type="button" data-publication="leisure-activity-segregation">Abs</button><a href="https://doi.org/10.1016/j.apgeog.2025.103513" target="_blank" rel="noreferrer">Full text</a></div>`;
+  placePulsePaper.insertAdjacentElement('beforebegin', article);
+  bindPublicationButtons(article);
+}
+
+// Keep the 2026 journal articles genuinely newest-to-oldest using official issue months.
+const year2026Heading = [...document.querySelectorAll('.publication-year h2')].find((h) => h.textContent.trim() === '2026');
+const year2026List = year2026Heading?.closest('.publication-year')?.nextElementSibling;
+if (year2026List?.classList.contains('publication-list')) {
+  const ordered2026 = [
+    'function-over-morphology',
+    'green-isolation',
+    'consumption-downgrading',
+    'sinking-city',
+    'digital-quality-gradient',
+    'spatial-digital-coupling',
+    'berlin-traffic',
+    'tactile-paving',
+    'one-city-two-heats',
+    'ai-urban-heat',
+    'commuting-review',
+    'flood-sensing',
+    'urban-shrinkage',
+    'road-speed-classes',
+    'paying-lip-service',
+    'digital-economy',
+    'intergenerational-renewal',
+    'green-space-sentiment'
+  ];
+  ordered2026.forEach((id) => {
+    const article = year2026List.querySelector(`[data-publication="${id}"]`)?.closest('article');
+    if (article) year2026List.appendChild(article);
+  });
+}
+
+// Clarify that non-peer-reviewed outputs are deliberately separated from journal articles.
+const sectionLead = document.querySelector('.publications-page .section-lead');
+if (sectionLead) sectionLead.textContent = 'Peer-reviewed journal articles are listed from newest to oldest. Preprints and research datasets are listed separately below.';
+
+// Add the verified arXiv preprint as a separate research-output section.
+const publicationsSection = document.querySelector('.publications-page');
+if (publicationsSection && !document.querySelector('#preprints-heading')) {
+  const preprintHeading = document.createElement('div');
+  preprintHeading.className = 'publication-year';
+  preprintHeading.id = 'preprints-heading';
+  preprintHeading.innerHTML = '<h2>Preprints</h2>';
+
+  const preprintList = document.createElement('div');
+  preprintList.className = 'publication-list';
+  preprintList.innerHTML = `<article><p class="publication-title"><button type="button" data-publication="ai-human-building-typology">AI vs Human Expert Reasoning: Assessing Agreements in Building Typology Predictions based on Street View Imagery</button></p><p class="publication-authors">Zahratu Shabrina, Muhammad Asa, <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a>, Lu Yin &amp; Stephen Law</p><p class="publication-venue"><em>arXiv:2607.14756</em>, Jul 2026, <a href="https://arxiv.org/abs/2607.14756" target="_blank" rel="noreferrer">arXiv</a></p><div class="publication-actions"><button type="button" data-publication="ai-human-building-typology">Abs</button><a href="https://arxiv.org/abs/2607.14756" target="_blank" rel="noreferrer">Full text</a></div></article>`;
+
+  publicationsSection.append(preprintHeading, preprintList);
+  bindPublicationButtons(preprintList);
+}
+
+// Add the institutional/Zenodo dataset separately, so it is not counted as a journal paper.
+if (publicationsSection && !document.querySelector('#datasets-heading')) {
+  const datasetHeading = document.createElement('div');
+  datasetHeading.className = 'publication-year';
+  datasetHeading.id = 'datasets-heading';
+  datasetHeading.innerHTML = '<h2>Research Datasets</h2>';
+
+  const datasetList = document.createElement('div');
+  datasetList.className = 'publication-list';
+  datasetList.innerHTML = `<article><p class="publication-title"><a href="https://doi.org/10.5281/zenodo.15806063" target="_blank" rel="noreferrer">Hack4Resilient Jakarta 2025: Sinking City</a></p><p class="publication-authors">Zahratu Shabrina, Fajrun Wahidil Muharram, Dekka Dhirgantara Putra, <a href="${scholarUrl}" target="_blank" rel="noreferrer">Jin Rui</a> &amp; Muhammad Asa</p><p class="publication-venue"><em>Zenodo</em>, Aug 2025, <a href="https://doi.org/10.5281/zenodo.15806063" target="_blank" rel="noreferrer">10.5281/zenodo.15806063</a></p><div class="publication-actions"><a href="https://doi.org/10.5281/zenodo.15806063" target="_blank" rel="noreferrer">Dataset</a></div></article>`;
+
+  publicationsSection.append(datasetHeading, datasetList);
+}
+
+// Refresh topic-filter counts after all verified journal additions.
+document.querySelectorAll('.publication-filters button').forEach((button) => {
   const topic = button.dataset.topic;
-  const count = topic === "all"
+  const count = topic === 'all'
     ? publicationTopics.size
     : [...publicationTopics.values()].filter((topics) => topics.includes(topic)).length;
-  button.querySelector("span").textContent = String(count);
+  button.querySelector('span').textContent = String(count);
 });

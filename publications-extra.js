@@ -1,9 +1,4 @@
-// Publications page reconciled to the 38 records in the supplied Google Scholar snapshot.
-
-const scholarExcludedTitle = "From planar proximity to room-level depth: Nonlinear capitalization of historic landscape visibility in dense urban districts";
-publicationTopics.delete(scholarExcludedTitle);
-const excludedIndex = publications.findIndex((item) => item.id === "historic-landscape-visibility");
-if (excludedIndex >= 0) publications.splice(excludedIndex, 1);
+// Additional publication records. Core records include the six verified PDF updates.
 
 const scholarAdditions = [
   {
@@ -203,7 +198,7 @@ document.querySelectorAll("#publication-results [data-publication]").forEach((bu
   });
 });
 
-if (publicationTopics.size !== 38 || publications.length !== 38) {
+if (publicationTopics.size !== publications.length || new Set(publications.map((item) => item.id)).size !== publications.length) {
   console.warn("Publication alignment warning:", {
     topicCount: publicationTopics.size,
     publicationCount: publications.length

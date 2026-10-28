@@ -1,6 +1,7 @@
 const scholarUrl = "https://scholar.google.com/citations?user=DCsYsa0AAAAJ&hl=en";
 
 const publicationTopics = new Map([
+  ["Street-scale heat exposure mapping for urban cyclists: Integrating vision transformer-GAN with aggregated Strava cycling activity data", ["climate", "mobility", "health"]],
   ["Seeing prosperity, confronting crime: Infrastructure inequality and perceived wealth in Chinese cities", ["health"]],
   ["Mobility for whom? A systematic review of the equity and environmental justice consequences of transit-oriented development", ["climate", "mobility", "health"]],
   ["Perceived Safety and Crime Risk Across Day and Night Contexts in Shanghai", ["health"]],
@@ -25,7 +26,7 @@ const publicationTopics = new Map([
   ["Scale-dependent environmental influences on urban green space sentiment: Integrating multimodal social media analysis and explainable spatial models", ["climate", "health"]],
   ["Intergenerational spatial differentiation in neighborhood renewal: How can we achieve spatial equity between the elderly and the young?", ["health"]],
   ["Marginalized but equal? An investigation of visible green equity disparities in marginalized residents' daily commutes and its potential green solutions", ["climate", "mobility", "health"]],
-  ["Green disparities, happiness elusive: Decoding the spatial mismatch between green equity and happiness from vulnerable perspectives", ["climate", "health"]],
+  ["Green disparities, happiness elusive: Decoding the spatial mismatch between green equity and the happiness from vulnerable perspectives", ["climate", "health"]],
   ["Leveraging large language models for tourism research based on 5D framework: A collaborative analysis of tourist sentiments and spatial features", ["mobility", "health"]],
   ["Plausible or misleading? Evaluating the adaption of the Place Pulse 2.0 dataset for predicting subjective perception in Chinese urban landscapes", ["health"]],
   ["Revealing the impact of urban spatial morphology on land surface temperature in plain and plateau cities using explainable machine learning", ["climate", "health"]],
@@ -71,6 +72,16 @@ document.querySelectorAll(".publication-filters button").forEach((button) => {
 });
 
 const publications = [
+  {
+    id: "street-scale-cyclist-heat-exposure",
+    date: "Jan 2027",
+    title: "Street-scale heat exposure mapping for urban cyclists: Integrating vision transformer-GAN with aggregated Strava cycling activity data",
+    authors: "Jin Rui & Zhaowen Xu",
+    journal: "Transportation Research Part A: Policy and Practice 215, 105317",
+    abstract: "Street-scale variation in the thermal environment is difficult to represent using spatially coarse meteorological data, limiting the assessment of cycling environments during extreme heat. This study develops a street-scale heat-exposure mapping framework and applies it alongside aggregated cycling activity records in Melbourne. The framework combines street-view imagery and environmental metadata using a Vision Transformer and a conditional generative adversarial network to predict calibrated operative-temperature-equivalent fields. These fields serve as environmental heat-exposure proxies; direct assessment of thermal comfort and physiological heat stress requires additional subjective and physiological observations. The model achieved a mean absolute error of 3.42 °C against calibrated reference label fields on the independent test set. Analysis of 35,416 street-view images identified six landscape types, with higher predicted exposure in dense built-up environments and lower exposure in green-dominated environments. Multi-kernel support vector regression was used to examine the predictive importance of streetscape indicators, while aggregated Strava records from 4 to 13 March 2024 were used to compare cycling activity during the heatwave and adjacent comparison days. The principal contribution is a framework for characterizing fine-scale environmental heat-exposure patterns alongside cycling activity. The short observation window and aggregated data limit inference about individual adaptation and causal effects.",
+    doi: "https://doi.org/10.1016/j.tra.2026.105317",
+    pdf: ""
+  },
   {
     id: "seeing-prosperity-crime",
     date: "Jan 2027",
@@ -315,7 +326,7 @@ const publications = [
   {
     id: "green-disparities",
     date: "Aug 2025",
-    title: "Green disparities, happiness elusive: Decoding the spatial mismatch between green equity and happiness from vulnerable perspectives",
+    title: "Green disparities, happiness elusive: Decoding the spatial mismatch between green equity and the happiness from vulnerable perspectives",
     authors: "Jin Rui",
     journal: "Cities 163, 106063",
     abstract: "The equity of urban green spaces (UGS) plays a crucial role in social well-being. While previous studies have examined UGS disparities among various social groups, few have addressed the spatial heterogeneity of UGS inequality affecting vulnerable populations and its impact on their well-being. This study explores how street- scape greenness (SG), neighborhood greenery (NG), and public green spaces (PGS) influence the happiness of vulnerable groups, and it provides regional priorities for green policy through spatial mismatch analysis. The results reveal a strong and stable inequity in the center of Nanjing, which decreases toward the suburbs. Analysis of four vulnerable groups shows that the low-educated population is impacted by activity isolation; therefore, increasing activity facilities and reducing barriers to participation in PGS can alleviate this issue. Elderly groups favor expansive PGS or vibrant SG but are sensitive to the distance and accessibility of these green areas. Low- income groups, acting as “gardeners” to develop NG. This spontaneous behavior needs to be regulated differently for formal and informal neighborhoods. Additionally, PGS has the most potential to enhance the sense of belonging among expatriate household groups. The differentiated UGS planning recommendations we proposed offer new insights into strengthening spatial equity and social integration.",

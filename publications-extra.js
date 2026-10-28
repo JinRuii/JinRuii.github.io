@@ -1,4 +1,4 @@
-// Additional publication records. Core records include the six verified PDF updates.
+// Additional journal and preprint records; avoid listing published articles twice.
 
 const scholarAdditions = [
   {
@@ -77,17 +77,6 @@ const scholarAdditions = [
     doi: "https://ssrn.com/abstract=7324977",
     topics: ["climate", "health"],
     kind: "preprint"
-  },
-  {
-    id: "spatial-digital-coupling-ssrn",
-    date: "",
-    title: "Unpacking spatial-digital coupling: Non-linear morphological thresholds and localized built environment impacts in Beijing",
-    authors: "Zuozheng Shi, Senyang Yao, Jin Rui, Changran Li & Wen Ouyang",
-    journal: "Available at SSRN 6945428",
-    abstract: "This working-paper version studies digital infrastructure usage intensity in Beijing's historical core and identifies nonlinear morphological thresholds and spatially heterogeneous built-environment effects.",
-    doi: "https://doi.org/10.2139/ssrn.6945428",
-    topics: ["mobility"],
-    kind: "preprint"
   }
 ];
 
@@ -109,8 +98,7 @@ scholarAdditions.forEach((item) => {
 
 const preprintIds = new Set([
   "ai-human-building-typology",
-  "flood-susceptibility-ssrn",
-  "spatial-digital-coupling-ssrn"
+  "flood-susceptibility-ssrn"
 ]);
 
 function authorHtml(authors) {

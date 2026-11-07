@@ -1,6 +1,7 @@
 const scholarUrl = "https://scholar.google.com/citations?user=DCsYsa0AAAAJ&hl=en";
 
 const publicationTopics = new Map([
+  ["Is urban browning more than impervious expansion? Linking landscape-pattern reorganization to flood susceptibility in the Greater Bay Area", ["climate"]],
   ["Street-scale heat exposure mapping for urban cyclists: Integrating vision transformer-GAN with aggregated Strava cycling activity data", ["climate", "mobility", "health"]],
   ["Seeing prosperity, confronting crime: Infrastructure inequality and perceived wealth in Chinese cities", ["health"]],
   ["Mobility for whom? A systematic review of the equity and environmental justice consequences of transit-oriented development", ["climate", "mobility", "health"]],
@@ -110,6 +111,16 @@ const publications = [
     journal: "Journal of Geovisualization and Spatial Analysis 10, 48",
     abstract: "Safety perception plays a crucial role in promoting sustainable urban development, as it influences residents’ spatial use behaviors, social interaction patterns, and neighborhood cohesion. However, existing studies have largely focused on single temporal contexts or relied on perception data derived from Western urban environments, leaving day–night differences in the relationship between safety perception and crime risk insufficiently understood. This study integrates generative artificial intelligence with questionnaire-based perception ratings to examine differences in safety perception between daytime and nighttime and their associations with crime risk. Focusing on central Shanghai, we analyzed adjudicated and publicly disclosed criminal cases from 2017 to 2019, generated corresponding nighttime street-view images (SVI) using a CycleGAN-based Day-to-Night (D2N) model, and obtained safety perception ratings for 1,751 valid SVI samples through a survey of 65 Shanghai residents. We then employed graph convolutional neural network weighted regression (GCNNWR) and bootstrap-based mediation analysis to examine the relationships between daytime and nighttime crime rates and related factors. The results show that the mean safety perception score decreased from 6.29 during daytime to 6.02 at nighttime, with low nighttime safety perception exhibiting more pronounced spatial clustering. Activity density was positively associated with crime rates, whereas the negative association between police facilities and crime rates weakened at night. In addition, TCI and LSU exhibited indirect pathways associated with nighttime crime rates through safety perception. These findings provide empirical support for incorporating nighttime safety experiences into urban safety governance and for implementing more temporally and spatially targeted governance strategies.",
     doi: "https://doi.org/10.1007/s41651-026-00291-2",
+    pdf: ""
+  },
+  {
+    id: "urban-browning-flood-susceptibility",
+    date: "2026",
+    title: "Is urban browning more than impervious expansion? Linking landscape-pattern reorganization to flood susceptibility in the Greater Bay Area",
+    authors: "Jingyao Cui, Yichen Zhang, Jiquan Zhang, Jin Rui & Li Guo",
+    journal: "Sustainable Cities and Society 152, 108059",
+    abstract: "This study combines Sentinel-1 flood observations, XGBoost models, landscape metrics, SHAP analysis and scenario simulations to examine how urban browning relates to flood susceptibility in the Guangdong–Hong Kong–Macao Greater Bay Area. Green-space configuration, especially fragmentation, was strongly associated with spatial differences in modeled flood susceptibility. In the strongest scenario combining land-cover change and landscape reorganization, the share of grid cells classified as highly or very highly susceptible increased from 29.80% to 58.79%.",
+    doi: "https://doi.org/10.1016/j.scs.2026.108059",
     pdf: ""
   },
   {
